@@ -1,0 +1,114 @@
+/* This stylesheet belongs only to the separate desktop + phone edition. */
+@media(max-width:750px){
+ html{scroll-padding-top:12px}
+ #game{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;padding:60px 12px 18px;min-height:100svh;overflow:visible;gap:0}
+ header{top:14px;left:16px;right:16px;align-items:center;font-size:13px}
+ header b{font-size:20px;white-space:nowrap}
+ header #progress{text-align:right}
+ #landscape{background-size:auto 100%!important;background-position:center!important}
+ #cat-anchor{display:block;position:relative;bottom:auto;left:auto;width:118px;align-self:flex-start;margin:0 0 -10px 16px;z-index:2;flex-shrink:0;pointer-events:none}
+ #cat{display:block;width:100%;margin:0;max-height:none}
+ #panel{width:100%;padding:20px 16px;border-radius:18px;min-width:0;background:#fff7e9fa}
+ h1,#game.welcome h1{font-size:25px;line-height:1.18;overflow-wrap:anywhere}
+ p{font-size:17px;line-height:1.4}
+ .note{font-size:16px;line-height:1.35}
+ .choices{gap:8px;margin:14px 0}
+ .choices button,.choices.multiple button,.choices.paired button{font-size:18px;padding:10px 8px;min-height:46px;overflow-wrap:anywhere}
+ .choices.multiple{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .choices.paired{grid-template-columns:1fr}
+ .choices.paired legend{min-height:0;font-size:17px}
+ .choices.paired fieldset{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .choices.paired button{white-space:normal}
+ .feedback{font-size:17px;padding:12px;line-height:1.35}
+ .actions,#panel:has(.choices.paired) .actions{position:sticky;bottom:0;z-index:4;background:#fff7e9;padding:10px 0 max(10px,env(safe-area-inset-bottom));border-top:1px solid #dbc49e;gap:8px;margin:14px 0 -6px;display:flex;flex-wrap:wrap}
+ .actions>button,.actions>.download{min-height:46px;font-size:17px;padding:10px 12px;flex:1 1 auto;text-align:center}
+ #panel:has(.choices.paired){max-height:none;overflow:visible;scroll-padding-bottom:100px}
+ .moving #cat-anchor{transform:translateX(24px)}
+ #game.start{padding:58px 12px 18px;min-height:100svh;gap:14px}
+ #game.start #landscape{position:fixed;background-image:url('assets/trail.png')!important;background-size:auto 100%!important;background-position:center!important}
+ #game.start:before{content:'';display:block;width:calc(100% + 24px);margin:0 -12px;aspect-ratio:1672/941;background:url('assets/fork.png') center/contain no-repeat;flex-shrink:0;z-index:1}
+ #game.start #panel{width:100%;padding:18px 16px}
+ #game.start #cat-anchor{display:none}
+ .fork-mobile-question{display:block;font-size:19px;font-weight:bold;margin:0 0 12px}
+ .finale .equation{font-size:16px;line-height:1.6;overflow-wrap:anywhere}
+ .finale input{font-size:18px;min-height:48px}
+ .author-credit{font-size:15px}
+ .video-wrap iframe{min-height:180px}
+}
+@media(min-width:751px){.fork-mobile-question{display:none}}
+@media(max-width:360px){.choices.multiple,.choices.paired fieldset{grid-template-columns:1fr}}
+@media(max-height:500px) and (max-width:950px){
+ #game{padding-top:60px;align-items:flex-start}
+ #cat-anchor{position:relative;bottom:auto;left:auto;width:90px;margin:0 12px 0 0}
+ #panel,#panel:has(.choices.paired){max-height:none;overflow:visible}
+}
+@media(max-width:750px){#game.start:before{position:relative;z-index:1}}
+@media(min-width:361px) and (max-width:750px){.choices.paired button{font-size:16px;padding:10px 4px;white-space:nowrap}}
+
+/* Simplified route: scenery during questions, grounded cat only at greeting and award. */
+#game:not(.welcome):not(.finale) #cat-anchor{display:none}
+#game:not(.start){align-items:flex-start}
+@media(max-width:750px){
+ #game.welcome #panel,#game.finale #panel{order:1}
+ #game.start #cat-anchor{display:none}
+}
+
+
+@media(max-width:750px){#game.welcome #landscape,#game.finale #landscape{position:absolute;background-size:100% 100%!important;background-position:center!important}#game:has(.choices.paired) .eyebrow{display:none}#game:has(.choices.paired) h1{font-size:23px;margin-bottom:10px}#game:has(.choices.paired) p{margin:8px 0}#game:has(.choices.paired) .choices{margin:10px 0}#game:has(.choices.paired) .feedback{padding:10px} }
+
+#game #landscape{background-size:cover!important;background-position-y:100%!important}
+#game.welcome #landscape,#game.finale #landscape{position:fixed}
+#game #cat-anchor{display:none;background:none;position:fixed;order:initial;align-self:auto;height:auto;width:min(26vw,38vh);left:2vw;bottom:4vh;margin:0;z-index:0;pointer-events:none}
+#game #cat{position:relative;display:block;width:100%;left:auto;bottom:auto;margin:0}
+#game .ground-shadow{left:22%;bottom:-1%;width:64%;height:5%}
+#game.cat-fits:not(.start) #cat-anchor{display:block}
+@media(max-width:750px){#game #landscape{background-position-x:var(--scene-x,50%)!important}#game #cat-anchor{width:110px;left:18px;bottom:14px}#game.start #landscape{background-position:center!important}}
+
+/* One continuous fork illustration; no second landscape above or below it. */
+@media(max-width:750px){
+ #game.start{padding:58vh 12px 18px;gap:0}
+ #game.start:before{display:none}
+ #game.start #landscape{background-image:url('assets/fork.png')!important;background-size:auto 100%!important;background-position:52% top!important}
+ #game.start #panel{background:#fff7e9f2}
+}
+/* Override earlier mobile stretching rules with the same proportional crop everywhere. */
+#game.welcome #landscape,#game.finale #landscape{background-size:cover!important;background-position:center bottom!important;position:fixed}
+@media(min-width:751px){#game[data-question="1"]:not(.finale):not(.welcome) #cat-anchor,#game[data-question="2"]:not(.finale):not(.welcome) #cat-anchor,#game[data-question="5"]:not(.finale):not(.welcome) #cat-anchor{left:14vw;width:min(22vw,34vh)}}
+@media(max-width:750px){#game[data-question="1"]:not(.finale):not(.welcome) #cat-anchor,#game[data-question="2"]:not(.finale):not(.welcome) #cat-anchor,#game[data-question="5"]:not(.finale):not(.welcome) #cat-anchor{left:54%;width:100px}}
+
+@media(min-width:751px){
+ #game #cat-anchor{width:min(30vw,44vh)}
+ #game[data-question="1"]:not(.finale):not(.welcome) #cat-anchor,#game[data-question="2"]:not(.finale):not(.welcome) #cat-anchor{width:min(26vw,40vh)}
+ #game[data-question="5"]:not(.finale):not(.welcome) #cat-anchor{left:19vw;width:min(27vw,42vh)}
+ #game[data-scene="forge"]{justify-content:flex-start}
+ #game[data-scene="forge"] #cat-anchor{left:auto;right:2vw;width:min(32vw,48vh)}
+}
+@media(max-width:750px){
+ #game #cat-anchor{width:135px}
+ #game[data-question="1"]:not(.finale):not(.welcome) #cat-anchor,#game[data-question="2"]:not(.finale):not(.welcome) #cat-anchor{width:125px}
+ #game[data-question="5"]:not(.finale):not(.welcome) #cat-anchor{left:auto;right:16px;width:135px}
+ #game[data-scene="forge"] #cat-anchor{left:auto;right:12px;width:145px}
+}
+
+/* Award uses the top of the screen; sprite size follows the actual free area. */
+#game.finale header{display:none}
+#game.finale{padding-top:16px}
+@media(max-width:750px){#game.finale{padding-top:12px}#game.finale #panel{padding:14px 16px}#game.finale #certificate-preview{max-height:32svh;object-fit:contain}#game.finale h1{margin-bottom:10px}#game.finale p{margin:8px 0}}
+
+
+/* Keep the sprite out of answer feedback and moving scenes. */
+#game.moving #cat-anchor,#game.answered #cat-anchor{display:none!important}
+#game #cat-anchor{transition:none!important;transform:none!important}
+/* Name entry: crop away lower road, retain flowers and arch above it. */
+#game.finale[data-final-stage="name"] #landscape{background-position:center top!important;transform:scale(1.22);transform-origin:center top}
+
+
+/* Wide screens show a section of each panorama, leaving room for visible travel. */
+@media(min-width:751px){
+ #game[data-scene="trail"]:not(.welcome) #landscape,
+ #game[data-scene="trail-next"] #landscape{background-size:auto max(100vh,80vw)!important}
+}
+
+.channel-card{display:flex;align-items:center;gap:14px;margin-top:12px}.channel-card img{width:112px;height:112px;padding:8px;background:white;flex-shrink:0}.channel-card p{font-size:17px;margin:0}.channel-card span{font-size:14px}
+
+.channel-link{display:inline-block;color:#225d45;font-size:17px;font-weight:bold;padding:10px 0;text-underline-offset:3px}.channel-link:focus-visible{outline:3px solid #1264a3;outline-offset:3px}.channel-card>a{flex-shrink:0}
